@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>She Devs - Empowering Women in Tech</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #FF69B4;
+            --secondary-color: #800080;
+            --accent-color: #FFD700;
+            --dark-color: #1a1a1a;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .hero-section {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('tech-background.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .sponsor-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            transition: all 0.3s;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(255,105,180,0.3);
+        }
+
+        .sponsor-btn:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 6px 20px rgba(128,0,128,0.4);
+        }
+
+        .services-section {
+            padding: 8rem 0;
+            background-color: #f8f9fa;
+        }
+
+        .service-card {
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 1rem;
+            transition: all 0.4s;
+            background: white;
+            border: 1px solid rgba(255,105,180,0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 40px rgba(255,105,180,0.2);
+        }
+
+        .about-section {
+            padding: 8rem 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            position: relative;
+        }
+
+        .testimonials-section {
+            padding: 8rem 0;
+            background-color: #fff;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin: 1rem;
+            transition: all 0.3s;
+        }
+
+        .testimonial-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            object-fit: cover;
+        }
+
+        .stats-section {
+            padding: 5rem 0;
+            background: var(--dark-color);
+            color: white;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .stat-card h3 {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .social-links a {
+            color: white;
+            margin: 0 1rem;
+            font-size: 1.8rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-color);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            cursor: pointer;
+        }
+
+        .back-to-top:hover {
+            background: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+
+        .navbar {
+            transition: all 0.3s;
+            padding: 1rem 0;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255,105,180,0.95) !important;
+            padding: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top" style="background-color: rgba(255,105,180,0.95); color: white; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index: 1000;">
+        <div class="container">
+            <a class="navbar-brand text-white" href="#" style="font-size: 1.8rem; font-weight: 700;">She Devs</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link text-white" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#testimonials">Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#stats">Impact</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://media.giphy.com/media/L1R1tvI9svkIWwpVYr/giphy.gif'), url('https://images.pexels.com/photos/7516363/pexels-photo-7516363.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'); background-size: cover, contain, cover; background-position: center; background-repeat: no-repeat, repeat, no-repeat;">
+        <div class="hero-content">
+            <h1>Welcome to She Devs</h1>
+            <p class="lead mb-4" style="font-size: 1.5rem;">Empowering Women in Technology Across Zimbabwe</p>
+            <button class="sponsor-btn">Join Our Community</button>
+        </div>
+        <div class="custom-shape-divider-bottom">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <h2 class="text-center mb-5" style="color: var(--secondary-color); font-weight: 700;">Our Services</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="service-card text-center">
+                        <i class="fas fa-users fa-3x mb-4" style="color: var(--primary-color);"></i>
+                        <h3 class="mb-3">Mentorship</h3>
+                        <p>Connect with experienced professionals in tech and receive personalized guidance</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="service-card text-center">
+                        <i class="fas fa-laptop-code fa-3x mb-4" style="color: var(--primary-color);"></i>
+                        <h3 class="mb-3">Workshops</h3>
+                        <p>Hands-on learning experiences with industry-standard technologies</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="service-card text-center">
+                        <i class="fas fa-network-wired fa-3x mb-4" style="color: var(--primary-color);"></i>
+                        <h3 class="mb-3">Networking</h3>
+                        <p>Build valuable connections in Zimbabwe's growing tech community</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h2 class="mb-4">About She Devs</h2>
+                    <p class="lead">She Devs is Zimbabwe's premier platform dedicated to empowering women in technology through education, mentorship, and community building. We believe in creating opportunities and fostering an inclusive environment where women can thrive in tech.</p>
+                    <div class="mt-4">
+                        <button class="sponsor-btn">Learn More</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="position-relative" style="height: 400px;">
+                        <img src="https://media.giphy.com/media/hpXdHPfFI5wTABdDx9/giphy.gif" alt="Girl Coding Animation" class="img-fluid rounded-4 shadow-lg" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <h2 class="text-center mb-5" style="color: var(--secondary-color);">Success Stories</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card text-center">
+                        <img src="https://randomuser.me/api/portraits/women/1.jp" alt="Chiedza Moyo">
+                        <h4>Chiedza Moyo</h4>
+                        <p class="text-muted">Software Developer</p>
+                        <p>"She Devs helped me transition from teaching to tech. Now I'm a full-stack developer at a leading tech company in Harare."</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card text-center">
+                        <img src="https://randomuser.me/api/portraits/women/2.jp" alt="Tendai Mutasa">
+                        <h4>Tendai Mutasa</h4>
+                        <p class="text-muted">UX Designer</p>
+                        <p>"The mentorship program was life-changing. I found my passion in UX design and now work with clients globally."</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card text-center">
+                        <img src="https://randomuser.me/api/portraits/women/3.jp" alt="Rutendo Nyathi">
+                        <h4>Rutendo Nyathi</h4>
+                        <p class="text-muted">Data Scientist</p>
+                        <p>"The workshops and community support gave me the confidence to pursue my dreams in data science."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats" class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <h3>500+</h3>
+                        <p>Women Trained</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <h3>50+</h3>
+                        <p>Corporate Partners</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <h3>100+</h3>
+                        <p>Success Stories</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <h3>30+</h3>
+                        <p>Tech Workshops</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card shadow-lg border-0 rounded-4 p-4 h-100" style="background: rgba(255,105,180,0.05);">
+                        <h2 class="text-center mb-4" style="color: var(--primary-color);">Contact Us</h2>
+                        <form class="needs-validation" novalidate>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control rounded-3" id="contactName" placeholder="Your Name" required>
+                                <label for="contactName">Name</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control rounded-3" id="contactEmail" placeholder="name@example.com" required>
+                                <label for="contactEmail">Email</label>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <textarea class="form-control rounded-3" id="contactMessage" style="height: 120px" placeholder="Your message" required></textarea>
+                                <label for="contactMessage">Message</label>
+                            </div>
+                            <button type="submit" class="btn sponsor-btn w-100 py-3 rounded-3">
+                                <i class="fas fa-paper-plane me-2"></i>Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card shadow-lg border-0 rounded-4 p-4 h-100" style="background: rgba(128,0,128,0.05);">
+                        <h2 class="text-center mb-4" style="color: var(--secondary-color);">Join Our Community</h2>
+                        <form class="needs-validation" novalidate>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control rounded-3" id="joinName" placeholder="Your Name" required>
+                                <label for="joinName">Name</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control rounded-3" id="joinEmail" placeholder="name@example.com" required>
+                                <label for="joinEmail">Email</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="number" class="form-control rounded-3" id="joinAge" placeholder="Your Age" required>
+                                <label for="joinAge">Age</label>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <textarea class="form-control rounded-3" id="joinReason" style="height: 120px" placeholder="Why do you want to join?" required></textarea>
+                                <label for="joinReason">Reason for Joining</label>
+                            </div>
+                            <button type="submit" class="btn sponsor-btn w-100 py-3 rounded-3">
+                                <i class="fas fa-user-plus me-2"></i>Submit Application
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5" style="background: var(--dark-color);">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3 style="color: var(--accent-color);">Contact Us</h3>
+                    <p class="text-white">Email: info@shedevs.org</p>
+                    <p class="text-white">Phone: +263 77 123 4567</p>
+                    <p class="text-white">Address: Innovation Hub, Harare, Zimbabwe</p>
+                </div>
+                <div class="col-md-4">
+                    <h3 style="color: var(--accent-color);">Quick Links</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="#home" class="text-decoration-none text-white">Home</a></li>
+                        <li><a href="#services" class="text-decoration-none text-white">Services</a></li>
+                        <li><a href="#about" class="text-decoration-none text-white">About</a></li>
+                        <li><a href="#testimonials" class="text-decoration-none text-white">Testimonials</a></li>
+                        <li><a href="#contact" class="text-decoration-none text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h3 style="color: var(--accent-color);">Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <p class="text-white-50">&copy; 2023 She Devs. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
